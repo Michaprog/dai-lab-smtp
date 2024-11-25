@@ -7,5 +7,6 @@
 /dataSources/
 /dataSources.local.xml
 .idea
+code/Client/.idea
 .vscode
 .target
