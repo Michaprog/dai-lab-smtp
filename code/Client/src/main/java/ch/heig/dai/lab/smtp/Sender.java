@@ -2,14 +2,17 @@ package ch.heig.dai.lab.smtp;
 
 public class Sender extends Victim {
     private String username;
-    private String password;
+    static private String password;
     static private int port = 1234;
     static private String host = "TODO";
 
     public Sender(String email, String username, String password) {
         super(email);
         this.username = username;
-        this.password = password;
+    }
+
+    public static Sender castToSender(Victim victim){
+        return new Sender(victim.getEmail(), victim.getEmail().substring(0,6), password); // pas sur de la methodologie pour le username
     }
 
     String getUsername() {

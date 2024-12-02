@@ -8,12 +8,28 @@ public class Message {
     private String body;
     private static int idCounter = 0;
 
-    public Message(String from, String to, String subject, String body) {
+    public Message(String from, String to, String subject, String body){
         id = idCounter++;
         this.from = from;
         this.to = to;
         this.subject = subject;
         this.body = body;
+    }
+
+    public Message(String subject, String body){
+        id = idCounter++;
+        this.from = "";
+        this.to = "";
+        this.subject = subject;
+        this.body = body;
+    }
+
+    public void setFrom(String from){
+        this.from = from;
+    }
+
+    public void setTo(String to){
+        this.to = to;
     }
 
     public String getFrom() {

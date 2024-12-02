@@ -7,4 +7,8 @@ public class Victim {
         this.email = email;
     }
 
+    public String getEmail(){
+        return email;
+    }
+
 }

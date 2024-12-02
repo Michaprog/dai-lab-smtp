@@ -1,0 +1,6 @@
+
+"Important: Verify Your Account";"Dear User, we detected unusual activity in your account. Please click the link below to verify your identity: [malicious link]."
+"Congratulations! You've Won!","message";"You are the lucky winner of $1,000,000! Claim your prize now by clicking here: [malicious link]."
+"Claim Your Free Gift Now!";"Hi there! You've been selected for a free gift. Act fast, this offer expires soon: [malicious link]."
+"Account Suspension Warning";"Your account will be suspended in 24 hours unless you verify your information. Click here to resolve: [malicious link]."
+"Double Your Bitcoin Instantly!";"Invest $500 in Bitcoin today and get $1000 back instantly! Limited time offer: [malicious link]."

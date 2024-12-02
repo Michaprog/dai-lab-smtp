@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.*;
 import java.util.LinkedList;
 
-
 public class Client {
 
     LinkedList<Group> groups;
@@ -18,8 +17,11 @@ public class Client {
 
             Client client = new Client();
 
-            client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.json");
+            client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.txt");
             client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.json");
+
+            client.getGroups().toString();
+            client.getMessages().toString();
 
             //TODO: Impliment the SMTP client
 
@@ -32,16 +34,24 @@ public class Client {
     }
 
     private void loadVictims(String filePath) throws IOException {
-        File jsonFile = new File(filePath);
-        ObjectMapper objectMapper = new ObjectMapper();
-        LinkedList<Victim> totalvictims = objectMapper.readValue(jsonFile, LinkedList.class);
+        LinkedList<Victim> totalvictims = new LinkedList<>();
 
-        groups = new LinkedList<Group>();
+        try{BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = br.readLine()) != null) {
+                totalvictims.add(new Victim(line));
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        groups = new LinkedList<>();
         Group currentGroup = new Group();
 
         for (Victim victim : totalvictims) {
             if(currentGroup.getSender() == null){
-                currentGroup.AddSender((Sender) victim);
+                currentGroup.AddSender(Sender.castToSender(victim));
             }
             else if (currentGroup.getVictimsCount() < 4) {
                 currentGroup.AddVictim(victim);
@@ -58,10 +68,27 @@ public class Client {
     }
 
     private void loadMessages(String filePath) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        InputStream inputStream = new FileInputStream(filePath);
-        messages = objectMapper.readValue(inputStream, LinkedList.class);
-        inputStream.close();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 2) {
+                    messages.add(new Message(parts[0], parts[1]));
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public LinkedList<Group> getGroups() {
+        return groups;
+    }
+
+    public LinkedList<Message> getMessages() {
+        return messages;
     }
 
 }
