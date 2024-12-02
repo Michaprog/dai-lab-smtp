@@ -1,17 +1,18 @@
 package ch.heig.dai.lab.smtp;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Group {
     private int id;
     private Sender sender;
-    private LinkedList<Victim> victims;
+    private List<Victim> victims;
     private static int idCounter = 0;
 
     public Group() {
         id = idCounter++;
         sender = null;
-        victims = new LinkedList<>();
+        victims = new ArrayList<>();
     }
 
     void AddSender(Sender sender) {
@@ -28,7 +29,7 @@ public class Group {
         return sender;
     }
 
-    LinkedList<Victim> getVictims() {
+    List<Victim> getVictims() {
         return victims;
     }
 

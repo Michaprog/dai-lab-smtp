@@ -24,6 +24,16 @@ public class Message {
         this.body = body;
     }
 
+    public String getMessage(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("From: " + from + "\n");
+        sb.append("To: " + to + "\n");
+        sb.append("Subject: " + subject + "\n");
+        sb.append(body + "\n");
+
+        return sb.toString();
+    }
+
     public void setFrom(String from){
         this.from = from;
     }

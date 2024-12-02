@@ -2,32 +2,34 @@ package ch.heig.dai.lab.smtp;
 
 import java.io.*;
 import java.util.LinkedList;
+import java.util.List;
+
 
 public class Client {
 
-    LinkedList<Group> groups;
-    LinkedList<Message> messages;
+    List<Group> groups;
+    List<Message> messages;
 
     public static void main(String[] args) {
 
         try {
-
-            Client client = new Client();
+            Main client = new Main();
 
             client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.txt");
             client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.txt");
 
-            client.getGroups().toString();
-            client.getMessages().toString();
+            for (Group group : client.getGroups()) {
+                System.out.println(group);
+                String sender = group.getSender().getEmail();
+                List<Victim> receivers = group.getVictims();
+                String message = SmtpClient.selectRandomMessage(client.getMessages());
 
-            //TODO: Impliment the SMTP client
+                SmtpClient.sendEmail(sender, receivers, message);
+            }
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
         }
-
-
     }
 
     private void loadVictims(String filePath) throws IOException {
@@ -83,11 +85,11 @@ public class Client {
         }
     }
 
-    public LinkedList<Group> getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
-    public LinkedList<Message> getMessages() {
+    public List<Message> getMessages() {
         return messages;
     }
 
