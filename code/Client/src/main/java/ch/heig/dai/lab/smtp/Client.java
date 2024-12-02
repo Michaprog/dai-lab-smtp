@@ -2,6 +2,7 @@ package ch.heig.dai.lab.smtp;
 
 import java.io.*;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Client {
 
@@ -13,6 +14,7 @@ public class Client {
         try {
 
             Client client = new Client();
+            Random random = new Random();
 
             client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.txt");
             client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.txt");
@@ -20,7 +22,15 @@ public class Client {
             client.getGroups().toString();
             client.getMessages().toString();
 
-            //TODO: Impliment the SMTP client
+            ServerOI.getConnection();
+
+            for (Group group : client.getGroups()) {
+                int messageIndex = random.nextInt(client.getMessages().size());
+                Message message = client.getMessages().get(messageIndex);
+                ServerOI.sendMail(group, message);
+            }
+
+            ServerOI.closeConnection();
 
 
         } catch (IOException e) {
@@ -38,7 +48,7 @@ public class Client {
             }
             br.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Might inditace a missing @ in the email
         }
 
         groups = new LinkedList<>();

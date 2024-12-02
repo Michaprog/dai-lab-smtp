@@ -12,8 +12,4 @@ public class Sender extends Victim {
         return new Sender(victim.getEmail(), victim.getEmail().substring(0,6)); // pas sur de la methodologie pour le username
     }
 
-    String getUsername() {
-        return username;
-    }
-
 }

@@ -45,4 +45,8 @@ public class Group {
         return numberByGroup;
     }
 
+    public int getId() {
+        return id;
+    }
+
 }
