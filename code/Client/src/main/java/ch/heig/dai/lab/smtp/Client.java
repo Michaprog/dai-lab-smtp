@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 public class Client {
 
-    LinkedList<Group> groups;
-    LinkedList<Message> messages;
+    private LinkedList<Group> groups;
+    private LinkedList<Message> messages;
 
     public static void main(String[] args) {
 
@@ -26,8 +26,6 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private void loadVictims(String filePath) throws IOException {
@@ -50,7 +48,7 @@ public class Client {
             if(currentGroup.getSender() == null){
                 currentGroup.AddSender(Sender.castToSender(victim));
             }
-            else if (currentGroup.getVictimsCount() < 4) {
+            else if (currentGroup.getVictimsCount() < currentGroup.getNumberByGroup()) {
                 currentGroup.AddVictim(victim);
             }
             else {

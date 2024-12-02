@@ -7,6 +7,7 @@ public class Group {
     private Sender sender;
     private LinkedList<Victim> victims;
     private static int idCounter = 0;
+    private static int numberByGroup = 6; // default value
 
     public Group() {
         id = idCounter++;
@@ -14,26 +15,34 @@ public class Group {
         victims = new LinkedList<>();
     }
 
-    void AddSender(Sender sender) {
+    public void AddSender(Sender sender) {
         this.sender = sender;
     }
 
-    void AddVictim(Victim victim) {
-        if(this.victims.size() < 4) {
+    public void AddVictim(Victim victim) {
+        if(this.victims.size() < numberByGroup) {
             victims.add(victim);
         }
     }
 
-    Sender getSender() {
+    public Sender getSender() {
         return sender;
     }
 
-    LinkedList<Victim> getVictims() {
+    public LinkedList<Victim> getVictims() {
         return victims;
     }
 
-    int getVictimsCount() {
+    public int getVictimsCount() {
         return victims.size();
+    }
+
+    public void setNumberByGroup(int numberByGroup) {
+        this.numberByGroup = (numberByGroup - 1) ; // exclure le sender
+    }
+
+    public int getNumberByGroup() {
+        return numberByGroup;
     }
 
 }
