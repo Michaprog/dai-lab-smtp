@@ -1,5 +1,6 @@
 package ch.heig.dai.lab.smtp;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.io.*;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 public class Client {
 
     LinkedList<Group> groups;
+    LinkedList<Message> messages;
 
     public static void main(String[] args) {
 
@@ -16,7 +18,8 @@ public class Client {
 
             Client client = new Client();
 
-            client.loadVictims("victims.json");
+            client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.json");
+            client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.json");
 
             //TODO: Impliment the SMTP client
 
@@ -28,16 +31,15 @@ public class Client {
 
     }
 
-    public void loadVictims(String filePath) throws IOException {
+    private void loadVictims(String filePath) throws IOException {
+        File jsonFile = new File(filePath);
         ObjectMapper objectMapper = new ObjectMapper();
-        InputStream inputStream = new FileInputStream(filePath);
-        LinkedList<Person> totalvictims = objectMapper.readValue(inputStream, LinkedList.class);
-        inputStream.close();
+        LinkedList<Victim> totalvictims = objectMapper.readValue(jsonFile, LinkedList.class);
 
-        groups = new LinkedList<>();
+        groups = new LinkedList<Group>();
         Group currentGroup = new Group();
 
-        for (Person victim : totalvictims) {
+        for (Victim victim : totalvictims) {
             if(currentGroup.getSender() == null){
                 currentGroup.AddSender((Sender) victim);
             }
@@ -55,70 +57,11 @@ public class Client {
         }
     }
 
-}
-
-class Group {
-    private int id;
-    private Sender sender;
-    private LinkedList<Person> victims;
-    private static int idCounter = 0;
-
-    public Group() {
-        id = idCounter++;
-        sender = null;
-        victims = new LinkedList<>();
-    }
-
-    void AddSender(Sender sender) {
-        this.sender = sender;
-    }
-
-    void AddVictim(Person victim) {
-        if(this.victims.size() < 4) {
-            victims.add(victim);
-        }
-    }
-
-    Sender getSender() {
-        return sender;
-    }
-
-    LinkedList<Person> getVictims() {
-        return victims;
-    }
-
-    int getVictimsCount() {
-        return victims.size();
-    }
-
-}
-
-class Sender extends Person{
-    private String username;
-    private String password;
-    static private int port = 1234;
-    static private String host = "TODO";
-
-    public Sender(String email, String username, String password) {
-        super(email);
-        this.username = username;
-        this.password = password;
-    }
-
-    String getUsername() {
-        return username;
-    }
-
-    String getPassword() {
-        return password;
-    }
-
-    int getPort() {
-        return port;
-    }
-
-    String getHost() {
-        return host;
+    private void loadMessages(String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        InputStream inputStream = new FileInputStream(filePath);
+        messages = objectMapper.readValue(inputStream, LinkedList.class);
+        inputStream.close();
     }
 
 }
