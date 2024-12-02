@@ -1,0 +1,10 @@
+thomas.nguyen@example.ch
+michail.shashkov@example.ch
+john.smith@example.ch
+gary.johnson@example.ch
+emily.chen@example.ch
+david.lee@example.ch
+sophia.patel@example.ch
+oliver.brown@example.ch
+ava.garcia@example.ch
+charlie.davis@example.ch
