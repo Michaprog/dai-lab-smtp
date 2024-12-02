@@ -19,9 +19,6 @@ public class Client {
             client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.txt");
             client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.txt");
 
-            client.getGroups().toString();
-            client.getMessages().toString();
-
             ServerOI.getConnection();
 
             for (Group group : client.getGroups()) {
@@ -44,7 +41,11 @@ public class Client {
         try{BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line = br.readLine()) != null) {
-                totalvictims.add(new Victim(line));
+                if (!line.isEmpty()){
+                    totalvictims.add(new Victim(line));
+                } else {
+                    break;
+                }
             }
             br.close();
         } catch (IOException e) {

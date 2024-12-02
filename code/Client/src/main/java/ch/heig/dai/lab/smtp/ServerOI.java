@@ -1,6 +1,7 @@
 package ch.heig.dai.lab.smtp;
 import java.io.*;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 
 public class ServerOI {
 
@@ -12,8 +13,8 @@ public class ServerOI {
     public static void getConnection() {
         try{
             Socket socket = new Socket("localhost", port);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
+            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
 
         } catch (Exception e){
             e.printStackTrace();
