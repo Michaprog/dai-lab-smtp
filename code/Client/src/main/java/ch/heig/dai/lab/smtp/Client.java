@@ -1,8 +1,5 @@
 package ch.heig.dai.lab.smtp;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.InputStream;
 import java.io.*;
 import java.util.LinkedList;
 
@@ -18,7 +15,7 @@ public class Client {
             Client client = new Client();
 
             client.loadVictims("src/main/java/ch/heig/dai/lab/smtp/victims.txt");
-            client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.json");
+            client.loadMessages("src/main/java/ch/heig/dai/lab/smtp/messages.txt");
 
             client.getGroups().toString();
             client.getMessages().toString();
@@ -68,6 +65,9 @@ public class Client {
     }
 
     private void loadMessages(String filePath) throws IOException {
+
+        messages = new LinkedList<>();
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             String line;
