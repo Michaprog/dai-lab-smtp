@@ -29,7 +29,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ch.heig.dai.lab.smtp.Client</mainClass>
+                            <mainClass>ch.heig.dai.lab.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

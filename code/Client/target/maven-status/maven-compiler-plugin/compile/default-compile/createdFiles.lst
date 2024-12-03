@@ -1,6 +1,4 @@
-ch/heig/dai/lab/smtp/SmtpClient.class
-ch/heig/dai/lab/smtp/Sender.class
-ch/heig/dai/lab/smtp/Victim.class
-ch/heig/dai/lab/smtp/Group.class
-ch/heig/dai/lab/smtp/Message.class
-ch/heig/dai/lab/smtp/Main.class
+ch/heig/dai/lab/main/Message.class
+ch/heig/dai/lab/main/EditFiles.class
+ch/heig/dai/lab/main/runSMTP.class
+ch/heig/dai/lab/main/Main.class

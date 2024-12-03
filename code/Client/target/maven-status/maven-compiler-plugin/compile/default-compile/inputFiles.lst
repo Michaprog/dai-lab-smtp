@@ -1,6 +1,4 @@
-/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/smtp/Sender.java
-/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/smtp/SmtpClient.java
-/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/smtp/Message.java
-/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/smtp/Victim.java
-/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/smtp/Main.java
-/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/smtp/Group.java
+/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/main/runSMTP.java
+/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/main/Message.java
+/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/main/EditFiles.java
+/mnt/c/users/tdknguye/HEIG/BA3/DAI/labos/laboSmtp/dai-lab-smtp/code/Client/src/main/java/ch/heig/dai/lab/main/Main.java
