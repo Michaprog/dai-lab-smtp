@@ -1,46 +1,42 @@
 package ch.heig.dai.lab.main;
 
+import java.util.List;
+import java.util.Random;
+
+/**
+ * Represents a message composed by a header and a body
+ */
 public class Message {
-    private String from;
-    private String to;
+
     private String subject;
     private String body;
 
-    public Message(String from, String to, String subject, String body){
-        this.from = from;
-        this.to = to;
+    /**
+     * Message constructor
+     * @param subject header
+     * @param body content of the message
+     */
+    public Message(String subject, String body) {
         this.subject = subject;
         this.body = body;
     }
 
-    public Message(String subject, String body) {
-        this.from = "";
-        this.to = "";
-        this.subject = subject;
-        this.body = body;
+    /**
+     * Selects a random message from the list
+     * @param messages list of prank messages
+     * @return
+     */
+    protected static Message selectRandomMessage(List<Message> messages) {
+        Random random = new Random();
+        int randomIndex = random.nextInt(messages.size());
+        return messages.get(randomIndex);
     }
 
     public String getMessage() {
         return body;
     }
 
-    public void setFrom(String from){
-        this.from = from;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
     public String getSubject(){
         return subject;
-    }
-
-    public String getBody(){
-        return body;
     }
 }

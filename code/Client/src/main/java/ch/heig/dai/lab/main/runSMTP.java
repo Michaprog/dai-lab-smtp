@@ -1,15 +1,20 @@
 package ch.heig.dai.lab.main;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class runSMTP {
 
+    /**
+     * Runs the SMTP client application
+     * @param sender is the mail address of the sender
+     * @param victims is the list of mail addresses of the receivers
+     * @param message is the message to send
+     * @param HOST is the host of the SMTP server
+     * @param PORT is the port of the SMTP server
+     */
     public static void run(String sender, List<String> victims, Message message, String HOST, int PORT) {
             try (
                 Socket socket = new Socket(HOST, PORT);
@@ -41,6 +46,7 @@ public class runSMTP {
                 // Send email content
                 writer.write("From: " + sender + "\r\n");
                 writer.write("To: " + String.join(", ", victims) + "\r\n");
+                writer.write("Content-Type: text/plain; charset=UTF-8\r\n");
                 writer.write("Subject: " + message.getSubject() + "\r\n");
                 writer.write("\r\n");
                 writer.write(message.getMessage() + "\r\n");

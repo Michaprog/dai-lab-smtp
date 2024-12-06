@@ -1,11 +1,7 @@
 package ch.heig.dai.lab.main;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
 
@@ -19,14 +15,19 @@ public class Main {
 
         try {
             int numberOfGroups = Integer.parseInt(args[0]);
-            List<String> victims = EditFiles.loadVictims(victimsFile);
-            List<List<String>> groups = EditFiles.formGroups(victims, numberOfGroups);
-            List<Message> messages = EditFiles.loadMessages("messagesFile");
+
+            if (numberOfGroups <= 0) {
+                throw new IllegalArgumentException("number of groups must be greater than 0");
+            }
+
+            List<String> victims = LoadFiles.loadVictims(victimsFile);
+            List<List<String>> groups = LoadFiles.formGroups(victims, numberOfGroups);
+            List<Message> messages = LoadFiles.loadMessages(messagesFile);
 
             for (List<String> group : groups) {
                 String sender = group.get(0);
                 List<String> receivers = group.subList(1, group.size());
-                Message message = EditFiles.selectRandomMessage(messages);
+                Message message = Message.selectRandomMessage(messages);
 
                 runSMTP.run(sender, receivers, message, HOST, PORT);
             }
