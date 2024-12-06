@@ -17,22 +17,18 @@ public class LoadFiles {
     protected static List<String> loadVictims(String filePath) throws IOException {
         List<String> totalvictims = new ArrayList<>();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-
+    
             while ((line = br.readLine()) != null) {
-
-                if (!(line.contains("@") && line.endsWith(".com"))) {
+    
+                if (!(line.contains("@") && line.endsWith(".com") && line.endsWith(".ch"))) {
                     throw new IllegalArgumentException("Invalid email address : " + line);
                 }
                 totalvictims.add(line); 
             }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
+    
         return totalvictims;
     }
 
