@@ -22,7 +22,7 @@ public class LoadFiles {
     
             while ((line = br.readLine()) != null) {
     
-                if (!(line.contains("@") && line.endsWith(".com") && line.endsWith(".ch"))) {
+                if (!(line.contains("@") && (line.endsWith(".com") || line.endsWith(".ch")))) {
                     throw new IllegalArgumentException("Invalid email address : " + line);
                 }
                 totalvictims.add(line); 
@@ -77,7 +77,7 @@ public class LoadFiles {
         List <String> group = new ArrayList<>();
         group.add(victims.get(index));
 
-        for (int j = 1; j < groupSize; j++) { // Changed i to j
+        for (int j = 1; j < groupSize; j++) { 
             group.add(victims.get((index + j) % victims.size()));
         }
 
