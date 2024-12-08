@@ -4,7 +4,7 @@ DAI lab: SMTP
 Description
 ----------
 
-This repositry contains a Java implementation of a **TCP client** application that uses Socket API to communicate with a **SMTP Client***. 
+This repositry contains a Java implementation of a **TCP client** application that uses Socket API to communicate with a **SMTP Client**. 
 The application has been designed to send email pranks to a list of victims by sending prank mails with randomly selected messages. The project demonstrate the implementation of a SMTP protocol and provide a simple oriented model for sending mails.
 
 Repository Contents : 
@@ -13,15 +13,14 @@ Repository Contents :
 This project is composed by 2 directories:
 - ***files*** : contains 2 files in .txt.
 
-    -> victims.txt : contains the list of emails.
-    -> messages.txt : contains the list of prank messages composed by a header and a body.
-    
+    -> victims.txt : contains the list of emails.\
+    -> messages.txt : contains the list of prank messages composed by a header and a body.<br>
     *The user is free to add as much emails adress or prank messages as he wants and change them.*
 
-- ***main*** : contains 4 java files that handle the SMTP client
-    -> Main : execute the main program
-    -> LoadFiles : will load the .txt files and form groups
-    -> runSMTP : run the SMTP client
+- ***main*** : contains 4 java files that handle the SMTP client\
+    -> Main : execute the main program\
+    -> LoadFiles : will load the .txt files and form groups\
+    -> runSMTP : run the SMTP client\
     -> Message : Message class for the structure
 
 Instructions for setting up the Mock SMTP Server:
