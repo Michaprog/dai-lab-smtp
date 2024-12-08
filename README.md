@@ -11,8 +11,7 @@ Repository Contents :
 ----------
 
 This project is composed by 2 directories:
-- ***files*** : contains 2 files in .txt.
-
+- ***files*** : contains 2 files in .txt.\
     -> victims.txt : contains the list of emails.\
     -> messages.txt : contains the list of prank messages composed by a header and a body.<br>
     *The user is free to add as much emails adress or prank messages as he wants and change them.*
