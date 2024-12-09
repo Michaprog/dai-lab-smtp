@@ -31,16 +31,24 @@ To experiment with this tool without sending reels emails, we use a preconceived
 
  * 1st step : Install Docker on your machine if it's not done yet<br>
 
- * 2nd step : Run the following command to start the MaildevServer 
+ * 2nd step : pull the repository on your machine with the command `git pull git@github.com:Michaprog dai-lab-smtp.git`<br>
+
+ * 3rd step : launch docker (in our case, we use Docker Desktop because it's more convinient) <br>
+
+ * 4th step : Run the following command to start the MaildevServer 
         `docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev`<br>
 
- * 3rd step : check if MailDev is running properly:
-        `docker ps -a | grep maildev`<br>
+ * 5th step : check if MailDev is running properly:
+        `docker ps `<br>
 
- * 4th step : open a web browser and navigate to http://localhost:1080 to access the MailDev web interface.<br>
+ * 6th step : build the project with `mvn package` where the pom.xml is located
 
- * 5th step : stop the Maildev container:
-        `docker stop maildev`<br>
+ * 7th step : now that the project is built, you can execute the smtp Client with the `java -jar target/dai-smtp-1.0.jar` and an <int> in argument for specifying the number of groups you want to send to
+
+ * 8th step : open a web browser and navigate to http://localhost:1080 to access the MailDev web interface.<br>
+
+ * 9th step : stop the Maildev container:
+        `docker stop containerID`<br>
 
 Example Conversation using SMTP Client :
 ----------
